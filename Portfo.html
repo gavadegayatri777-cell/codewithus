@@ -1,0 +1,665 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gayatri Gavade | Portfolio</title>
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+
+    <style>
+        :root {
+            --brand-yellow: #FBBC05;
+            --brand-blue: #4285F4;
+            --dark-bg: #0f172a;
+            --glass-white: rgba(255, 255, 255, 0.05);
+            --glass-border: rgba(255, 255, 255, 0.1);
+            --transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--dark-bg);
+            color: #f8fafc;
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        /* --- Modern Scrollbar --- */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: var(--dark-bg); }
+        ::-webkit-scrollbar-thumb { background: #334155; border-radius: 10px; }
+
+        /* --- Glassmorphic Navbar --- */
+        .navbar {
+            backdrop-filter: blur(15px);
+            background: rgba(15, 23, 42, 0.8);
+            border-bottom: 1px solid var(--glass-border);
+            padding: 1.2rem 0;
+        }
+
+        .nav-link {
+            color: rgba(255,255,255,0.7) !important;
+            font-weight: 500;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .nav-link:hover {
+            color: var(--brand-yellow) !important;
+        }
+
+        /* --- Animations --- */
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+            100% { transform: translateY(0px); }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .animate-fade { animation: fadeIn 1s ease forwards; }
+
+        /* --- Hero Section --- */
+        .hero-section {
+            padding: 180px 0 100px;
+            background: radial-gradient(circle at 10% 20%, rgba(66, 133, 244, 0.1) 0%, transparent 40%);
+        }
+
+        .hero-img {
+            width: 100%;
+            max-width: 400px;
+            border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+            border: 8px solid var(--glass-border);
+            animation: float 6s ease-in-out infinite;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+        }
+
+        /* --- Cards & Sections --- */
+        .glass-card {
+            background: var(--glass-white);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--glass-border);
+            border-radius: 24px;
+            transition: var(--transition);
+        }
+
+        .glass-card:hover {
+            transform: translateY(-10px);
+            background: rgba(255, 255, 255, 0.08);
+            border-color: var(--brand-yellow);
+        }
+
+        .portfolio-item {
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        .portfolio-item img {
+            transition: var(--transition);
+        }
+
+        .portfolio-item:hover img {
+            transform: scale(1.1);
+        }
+
+        /* --- Buttons --- */
+        .btn-modern {
+            padding: 12px 32px;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: var(--transition);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .btn-yellow {
+            background: var(--brand-yellow);
+            color: #000;
+            border: none;
+        }
+
+        .btn-yellow:hover {
+            box-shadow: 0 10px 20px rgba(251, 188, 5, 0.3);
+            transform: scale(1.05);
+        }
+
+        .form-control {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--glass-border);
+            color: white;
+            padding: 12px;
+        }
+
+        .form-control:focus {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: var(--brand-blue);
+            color: white;
+            box-shadow: none;
+        }
+
+        /* --- Icon Boxes --- */
+        .icon-box {
+            width: 70px;
+            height: 70px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 20px;
+            margin-bottom: 20px;
+            font-size: 1.5rem;
+        }
+
+        /* --- Certification Slider --- */
+.cert-section {
+    padding: 80px 0;
+    background: radial-gradient(circle at bottom left, rgba(66, 133, 244, 0.05), transparent 40%);
+}
+
+.cert-card {
+    background: var(--glass-white);
+    backdrop-filter: blur(10px);
+    border: 1px solid var(--glass-border);
+    border-radius: 24px;
+    padding: 20px;
+    margin: 10px auto;
+    max-width: 700px;
+    transition: var(--transition);
+}
+
+.cert-img {
+    width: 100%;
+    height: auto;
+    border-radius: 15px;
+    border: 1px solid rgba(255,255,255,0.1);
+}
+
+.carousel-control-prev, .carousel-control-next {
+    width: 5%;
+    filter: invert(1); /* Makes controls visible on dark/glass backgrounds */
+}
+
+.cert-badge {
+    background: var(--brand-blue);
+    color: white;
+    padding: 5px 15px;
+    border-radius: 50px;
+    font-size: 0.8rem;
+    display: inline-block;
+    margin-bottom: 15px;
+}
+
+/* --- Lightbox / Modal Styling --- */
+.modal-content.glass-modal {
+    background: rgba(15, 23, 42, 0.9);
+    backdrop-filter: blur(20px);
+    border: 1px solid var(--glass-border);
+    border-radius: 24px;
+}
+
+.zoom-btn {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.9);
+    opacity: 0;
+    transition: var(--transition);
+    z-index: 10;
+}
+
+.cert-card:hover .zoom-btn {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+}
+
+.cert-card:hover .cert-img {
+    filter: brightness(0.5);
+}
+
+
+/* --- Skills Cloud Section --- */
+.skills-cloud-container {
+    padding: 100px 0;
+    position: relative;
+    overflow: hidden;
+    background: radial-gradient(circle at 50% 50%, rgba(66, 133, 244, 0.05) 0%, transparent 70%);
+}
+
+.cloud-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.skill-tag {
+    background: var(--glass-white);
+    backdrop-filter: blur(5px);
+    border: 1px solid var(--glass-border);
+    padding: 12px 25px;
+    border-radius: 50px;
+    color: white;
+    font-weight: 500;
+    font-size: 1.1rem;
+    cursor: default;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
+
+.skill-tag:hover {
+    border-color: var(--brand-yellow);
+    color: var(--brand-yellow);
+    transform: scale(1.1) !important;
+    box-shadow: 0 0 20px rgba(251, 188, 5, 0.2);
+    animation-play-state: paused; /* Stops floating on hover */
+}
+
+/* --- Floating Animations --- */
+@keyframes drift {
+    0% { transform: translate(0, 0); }
+    25% { transform: translate(5px, -10px); }
+    50% { transform: translate(-5px, 5px); }
+    75% { transform: translate(10px, 8px); }
+    100% { transform: translate(0, 0); }
+}
+
+/* Unique speeds for natural look */
+.drift-1 { animation: drift 5s infinite ease-in-out; }
+.drift-2 { animation: drift 7s infinite ease-in-out; }
+.drift-3 { animation: drift 6s infinite ease-in-out; }
+.drift-4 { animation: drift 8s infinite ease-in-out; }
+    </style>
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg fixed-top">
+    <div class="container">
+        <a class="navbar-brand fw-bold text-white" href="#">GAYATRI<span style="color:var(--brand-yellow)">.</span></a>
+        <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <span class="bi bi-list text-white fs-1"></span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+            <ul class="navbar-nav gap-lg-3">
+                <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
+                <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+                <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
+                <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<section class="hero-section" id="home">
+    <div class="container">
+        <div class="row align-items-center g-5">
+            <div class="col-lg-6 animate-fade">
+                <h1 class="display-2 fw-bold mb-4">Hello, <br><span style="color: var(--brand-blue)">I'm Gayatri Gavade</span></h1>
+                <p class="lead text-secondary mb-5">Frontend & Backend Developer | MCA Candidate | Google Student Ambassador. Specializing in modern web design and AI-driven solutions.</p>
+                <div class="d-flex flex-wrap gap-3">
+                    <a href="#projects" class="btn btn-modern btn-yellow">View My Work</a>
+                    <a href="#" class="btn btn-modern btn-outline-light">Download CV</a>
+                </div>
+            </div>
+            <div class="col-lg-6 text-center">
+                <img src="https://i.pinimg.com/736x/9f/67/11/9f6711c762768a4853b2f207fcc56ac4.jpg" alt="Gayatri Gavade" class="hero-img">
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="py-5" id="about">
+    <div class="container">
+        <div class="glass-card p-5">
+            <div class="row align-items-center g-5">
+                <div class="col-lg-5">
+                    <!-- <div class="position-relative">
+                        <img src="https://via.placeholder.com/400" class="img-fluid rounded-4" alt="About">
+                         <div class="position-absolute bottom-0 end-0 p-4 bg-primary rounded-4 m-3 shadow-lg">
+                           <h3 class="mb-0 fw-bold">BCA</h3>
+                            <small>Distinction</small> 
+                         </div>  -->
+                    </div>
+                </div>
+                <div class="col-lg-12">
+                    <h6 class="text-primary fw-bold text-uppercase">Who I Am</h6>
+                    <h2 class="display-6 fw-bold mb-4">Designing Solutions, Not Just Visuals</h2>
+                    <p class="text-secondary mb-4">I am Gayatri Mahesh Gavade, an MCA student from Kolhapur. My journey in tech is driven by curiosity and a commitment to excellence, bridging the gap between management and advanced IT.</p>
+                    <div class="row g-3">
+                        <div class="col-sm-3">
+                            <div class="p-3 rounded-3" style="background: rgba(66, 133, 244, 0.1);">
+                                <h6 class="fw-bold mb-1">BCA | 2022-2024</h6>
+                                <p class="small text-secondary mb-0">Vivekanada College Kolhapur,Maharashtra. </p>
+                            </div>
+                        </div>
+                       
+                             <div class="col-sm-3">
+                            <div class="p-3 rounded-3" style="background: rgba(66, 133, 244, 0.1);">
+
+                                <h6 class="fw-bold mb-1">MCA | 2025-2027</h6>
+                                <p class="small text-secondary mb-0">DYPatil Agriculture and Technical University Talsande,Maharashtra.</p>
+                            </div>
+                        </div>
+
+                         <div class="col-sm-3">
+                            <div class="p-3 rounded-3" style="background: rgba(66, 133, 244, 0.1);">
+                                <h6 class="fw-bold mb-1">Experience | Web Developer | July 04 to Oct 21 ,2023</h6>
+                                <p class="small text-secondary mb-0">I am a Full-Stack Developer skilled in creating responsive web applications using HTML5, CSS, JavaScript, and Bootstrap, supported by robust PHP and SQL backend systems.</p>
+                            </div>
+                        </div>
+
+                         <div class="col-sm-3">
+                            <div class="p-3 rounded-3" style="background: rgba(66, 133, 244, 0.1);">
+                                <h6 class="fw-bold mb-1">Experience | Digital Marketing Executive | Dec 15th 2023 to 30th Nov 2024</h6>
+                                <p class="small text-secondary mb-0">Focusing on Social Media Management with digital marketing strategies and campaigns that consistently deliver 50%–60% growth.</p>
+                            </div>
+                        </div>
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="py-5">
+    <div class="container">
+        <div class="text-center mb-5">
+            <h2 class="display-6 fw-bold">My Projects</h2>
+            <div class="mx-auto" style="width: 60px; height: 4px; background: var(--brand-yellow);"></div>
+        </div>
+        <div class="row g-4">
+            <!-- <div class="col-md-3 col-6">
+                <div class="glass-card p-4 text-center h-100">
+                    <img src="C:\Users\IBM\OneDrive\Desktop\Dairy Fram.png" class="card-img-top" alt="WordPress Project">
+                  
+                    <h5 class="fw-bold">Dairy Management Project</h5>
+                </div>
+            </div>
+            <div class="col-md-3 col-6">
+                <div class="glass-card p-4 text-center h-100">
+                    <img src="C:\Users\IBM\OneDrive\Desktop\Dairy Fram.png" class="card-img-top" alt="WordPress Project">
+                  
+                    <h5 class="fw-bold">AI-Agents Project</h5>
+                </div>
+            </div>
+            <div class="col-md-3 col-6">
+                <div class="glass-card p-4 text-center h-100">
+                    <img src="C:\Users\IBM\OneDrive\Desktop\GSA\photos of program\WhatsApp Image 2025-09-11 at 8.31.16 PM (1).jpeg" class="card-img-top" alt="WordPress Project">
+                    <h5 class="fw-bold">AI Sessions</h5>
+                </div>
+            </div> -->
+
+            <div class="col-md-6 col-12"> <div class="glass-card p-4 h-100">
+        <img src="C:\Users\IBM\OneDrive\Desktop\Dairy Fram.png" class="img-fluid rounded-3 mb-3" alt="Dairy Project">
+        
+        <h5 class="fw-bold mb-4 text-center">Dairy Management Project</h5>
+
+        <div class="row align-items-center">
+            <div class="col-6 border-end border-secondary border-opacity-25">
+                <div class="mb-3">
+                    <small class="d-flex justify-content-between mb-1">PHP <span>85%</span></small>
+                    <div class="progress" style="height: 6px; background: rgba(255,255,255,0.1);">
+                        <div class="progress-bar bg-primary" style="width: 85%;"></div>
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <small class="d-flex justify-content-between mb-1">MySQL <span>90%</span></small>
+                    <div class="progress" style="height: 6px; background: rgba(255,255,255,0.1);">
+                        <div class="progress-bar bg-info" style="width: 90%;"></div>
+                    </div>
+                </div>
+                <div class="mb-0">
+                    <small class="d-flex justify-content-between mb-1">Bootstrap <span>95%</span></small>
+                    <div class="progress" style="height: 6px; background: rgba(255,255,255,0.1);">
+                        <div class="progress-bar bg-warning" style="width: 95%;"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-6">
+                <p class="small text-secondary ps-2 mb-0" style="line-height: 1.4;">
+                    Developed a Dairy Management System, a full-stack web application that enables seamless product ordering and secure user data management. Built with a responsive frontend and a robust backend, the platform streamlines inventory interaction for registered users.
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="col-md-6 col-12"> <div class="glass-card p-4 h-100">
+        <img src="C:\Users\IBM\OneDrive\Pictures\Screenshots\Screenshot (87).png" class="img-fluid rounded-3 mb-3" alt="Dairy Project">
+        
+        <h5 class="fw-bold mb-4 text-center">AI Agent- Sales Copliot</h5>
+
+        <div class="row align-items-center">
+            <div class="col-6 border-end border-secondary border-opacity-25">
+                <div class="mb-3">
+                    <small class="d-flex justify-content-between mb-1">Relevance AI <span>100%</span></small>
+                    <div class="progress" style="height: 6px; background: rgba(255,255,255,0.1);">
+                        <div class="progress-bar bg-primary" style="width: 100%;"></div>
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <small class="d-flex justify-content-between mb-1">API-Google AI Studio <span>90%</span></small>
+                    <div class="progress" style="height: 6px; background: rgba(255,255,255,0.1);">
+                        <div class="progress-bar bg-info" style="width: 90%;"></div>
+                    </div>
+                </div>
+                <div class="mb-0">
+                    <small class="d-flex justify-content-between mb-1">AI Model-Gemini <span>95%</span></small>
+                    <div class="progress" style="height: 6px; background: rgba(255,255,255,0.1);">
+                        <div class="progress-bar bg-warning" style="width: 95%;"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-6">
+                <p class="small text-secondary ps-2 mb-0" style="line-height: 1.4;">
+                    I developed an AI Sales Co-pilot using Relevance AI that automates pre-call research. By processing a company’s website, LinkedIn profile, and supplementary data, the agent generates concise, actionable pre-call reports to streamline sales preparation and lead qualification.
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="col-md-6 col-12"> <div class="glass-card p-4 h-100">
+        <img src="C:\Users\IBM\OneDrive\Pictures\Screenshots\Screenshot (15).png" class="img-fluid rounded-3 mb-3" alt="Dairy Project">
+        
+        <h5 class="fw-bold mb-4 text-center">AI Sessions</h5>
+
+        <div class="row align-items-center">
+            <div class="col-6 border-end border-secondary border-opacity-25">
+                <div class="mb-3">
+                    <small class="d-flex justify-content-between mb-1">What is AI? <span>85%</span></small>
+                    <div class="progress" style="height: 6px; background: rgba(255,255,255,0.1);">
+                        <div class="progress-bar bg-primary" style="width: 85%;"></div>
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <small class="d-flex justify-content-between mb-1">AI Models-Gemini <span>90%</span></small>
+                    <div class="progress" style="height: 6px; background: rgba(255,255,255,0.1);">
+                        <div class="progress-bar bg-info" style="width: 90%;"></div>
+                    </div>
+                </div>
+                <div class="mb-0">
+                    <small class="d-flex justify-content-between mb-1"> Useage of AI in Projects<span>95%</span></small>
+                    <div class="progress" style="height: 6px; background: rgba(255,255,255,0.1);">
+                        <div class="progress-bar bg-warning" style="width: 95%;"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-6">
+                <p class="small text-secondary ps-2 mb-0" style="line-height: 1.4;">
+                    As a Google Student Ambassador, I led sessions on leveraging Gemini and AI tools for projects, careers, and business, while successfully completing all official Google initiatives to drive community AI adoption.
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<div class="col-md-6 col-12"> <div class="glass-card p-4 h-100">
+        <img src="C:\Users\IBM\OneDrive\Pictures\Screenshots\Screenshot (85).png" class="img-fluid rounded-3 mb-3" alt="Dairy Project">
+        
+        <h5 class="fw-bold mb-4 text-center">Workshops</h5>
+
+        <div class="row align-items-center">
+            <div class="col-6 border-end border-secondary border-opacity-25">
+                <div class="mb-3">
+                    <small class="d-flex justify-content-between mb-1">Prompt Enigeering <span>85%</span></small>
+                    <div class="progress" style="height: 6px; background: rgba(255,255,255,0.1);">
+                        <div class="progress-bar bg-primary" style="width: 85%;"></div>
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <small class="d-flex justify-content-between mb-1">Hands-On-Ai Agents <span>90%</span></small>
+                    <div class="progress" style="height: 6px; background: rgba(255,255,255,0.1);">
+                        <div class="progress-bar bg-info" style="width: 90%;"></div>
+                    </div>
+                </div>
+                <div class="mb-0">
+                    <small class="d-flex justify-content-between mb-1">Relevance Ai & n8n <span>95%</span></small>
+                    <div class="progress" style="height: 6px; background: rgba(255,255,255,0.1);">
+                        <div class="progress-bar bg-warning" style="width: 95%;"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-6">
+                <p class="small text-secondary ps-2 mb-0" style="line-height: 1.4;">
+                    As a Google Student Ambassador, I led a successful two-day workshop on Prompt Engineering and AI Agent development, providing hands-on training and certification to participating students.
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+</div>
+</div>
+</section>
+
+<!-- <section class="cert-section" id="certifications">
+    <div class="container">
+        
+        </section> -->
+
+<section class="cert-section" id="certifications">
+    <div class="container">
+        <div class="text-center mb-5">
+            <h6 class="text-warning fw-bold text-uppercase" style="letter-spacing: 2px;">Achievements</h6>
+            <h2 class="display-6 fw-bold text-white">Certifications & Recognitions</h2>
+            <div class="mx-auto mt-2" style="width: 50px; height: 3px; background: var(--brand-blue);"></div>
+        </div>
+        <div id="certCarousel" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-inner">
+                
+                <div class="carousel-item active">
+                    <div class="cert-card text-center position-relative">
+                        <span class="cert-badge">Google Cloud</span>
+                        <div class="position-relative overflow-hidden rounded-3">
+                            <img src="https://via.placeholder.com/600x400?text=Google+Certificate" class="cert-img mb-3" alt="Cert 1">
+                            <button class="btn btn-yellow btn-sm zoom-btn" data-bs-toggle="modal" data-bs-target="#modalCert1">
+                                <i class="bi bi-zoom-in me-2"></i>View Full Size
+                            </button>
+                        </div>
+                        <h5 class="fw-bold text-white mt-3">Google Student Ambassador</h5>
+                    </div>
+                </div>
+
+                <div class="carousel-item">
+                    <div class="cert-card text-center position-relative">
+                        <span class="cert-badge">Web Dev</span>
+                        <div class="position-relative overflow-hidden rounded-3">
+                            <img src="https://via.placeholder.com/600x400?text=Web+Dev+Certificate" class="cert-img mb-3" alt="Cert 2">
+                            <button class="btn btn-yellow btn-sm zoom-btn" data-bs-toggle="modal" data-bs-target="#modalCert2">
+                                <i class="bi bi-zoom-in me-2"></i>View Full Size
+                            </button>
+                        </div>
+                        <h5 class="fw-bold text-white mt-3">Full Stack Developer</h5>
+                    </div>
+                </div>
+
+            </div>
+            </div>
+    </div>
+</section>
+
+<div class="modal fade" id="modalCert1" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content glass-modal p-2">
+            <div class="modal-header border-0">
+                <h5 class="modal-title text-white">Google Student Ambassador Certificate</h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body text-center">
+                <img src="https://via.placeholder.com/1200x800?text=Full+Size+Google+Cert" class="img-fluid rounded-3" alt="Full size 1">
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="modalCert2" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content glass-modal p-2">
+            <div class="modal-header border-0">
+                <h5 class="modal-title text-white">Full Stack Web Development</h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body text-center">
+                <img src="https://via.placeholder.com/1200x800?text=Full+Size+Web+Dev+Cert" class="img-fluid rounded-3" alt="Full size 2">
+            </div>
+        </div>
+    </div>
+</div>
+
+<section class="skills-cloud-container">
+    <div class="container text-center mb-5">
+        <h6 class="text-primary fw-bold text-uppercase" style="letter-spacing: 2px;">Tech Stack</h6>
+        <h2 class="display-6 fw-bold text-white">Technical Skills Cloud</h2>
+    </div>
+
+    <div class="container">
+        <div class="cloud-wrapper">
+            <div class="skill-tag drift-1">HTML5</div>
+            <div class="skill-tag drift-3">CSS3</div>
+            <div class="skill-tag drift-2">JavaScript</div>
+            <div class="skill-tag drift-4" style="border-color: var(--brand-yellow);">PHP</div>
+            <div class="skill-tag drift-1">MySQL</div>
+            <div class="skill-tag drift-3" style="border-color: var(--brand-blue);">Python</div>
+            <div class="skill-tag drift-2">Bootstrap 5</div>
+            <div class="skill-tag drift-4">React.js</div>
+            <div class="skill-tag drift-1">Git / GitHub</div>
+            <div class="skill-tag drift-2" style="border-color: var(--brand-yellow);">Google Cloud</div>
+            <div class="skill-tag drift-3">UI/UX Design</div>
+            <div class="skill-tag drift-1">C++</div>
+            <div class="skill-tag drift-4">Generative AI</div>
+        </div>
+    </div>
+</section>
+
+
+<footer class="py-5 border-top border-secondary border-opacity-25 mt-5">
+    <div class="container text-center">
+        <div class="d-flex justify-content-center gap-4 mb-4">
+            <a href="#" class="text-white fs-4"><i class="bi bi-linkedin"></i></a>
+            <a href="#" class="text-white fs-4"><i class="bi bi-github"></i></a>
+            <a href="#" class="text-white fs-4"><i class="bi bi-envelope-fill"></i></a>
+        </div>
+        <p class="text-secondary small">© 2026 Gayatri Gavade | Designed with Precision</p>
+    </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
